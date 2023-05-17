@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyframing</title>
+</head>
+<body>
+
+    <style>
+        .box {
+            width:100px;
+            height:100px;
+            background:salmon;
+            animation-name:colorful-text;
+            animation-duration:1s;
+        }
+
+        @keyframes colorful-text {
+            0% {
+                background:salmon;
+            }
+            50% {
+                background:yellow;
+            }
+            100% {
+                background:blue;
+            }
+        }
+
+        .box:hover {
+            animation-name:skew-box;
+            animation-duration:1s;
+        }
+
+        @keyframes skew-box {
+            0% {
+                background:salmon;
+            }
+            50% {
+                background:yellow;
+                transform: skew(15deg) scale(1.2,1.2);
+            }
+            100% {
+                background:rgb(50, 97, 173);
+                transform: skew(-15deg) scale(2,2);
+            }
+        }
+
+    </style>
+    
+    <div class="box"></div>
+
+</body>
+</html>
