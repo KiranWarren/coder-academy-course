@@ -1,6 +1,7 @@
 from flask import Flask
 import json
 from datetime import datetime
+from random import randint
 
 app = Flask(__name__)
 
@@ -35,4 +36,10 @@ def educators():
 
 @app.route("/coinflip")
 def flip():
-    
+    result = "heads"
+    if randint(1,2) == 1:
+        result = "tails"
+    coin_flip = {
+        "result": result
+    }
+    return json.dumps(coin_flip)
