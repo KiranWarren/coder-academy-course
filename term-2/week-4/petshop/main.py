@@ -14,11 +14,18 @@ def init_app():
     # connect db through orm
     db.init_app(app)
 
-    # cli commands to creatae default orms
-
     # connect schemas
     ma.init_app(app)
 
+    # cli commands to create default orms
+    from cli_commands import db_commands
+    app.register_blueprint(db_commands)
+
     # creating routes or controllers through blueprint
+    from controllers.pets_controller import pets
+    from controllers.pet_owners_controller import pet_owners
+
+    app.register_blueprint(pets)
+    app.register_blueprint(pet_owners)
     
     return app
