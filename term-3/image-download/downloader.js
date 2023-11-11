@@ -19,8 +19,25 @@ const path = require("node:path");
 // Constants
 API_URL_BASE = "https://pokeapi.co/api/v2/pokemon/";
 
-//
-function downloadPokePic(targetId = getRandomId()) {}
+function downloadPokePic(targetId = getRandomId()) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // Get the image URL
+      let newUrl = await getPokePicURL(targetId);
+
+      // Download the image
+      let saveFileLocation = await savePokePicToDisk(
+        newUrl,
+        "ExampleImage.png",
+        "images"
+      );
+
+      resolve(saveFileLocation);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 
 // Generate a random number between 1 and 1017 (valid Pokemon Ids)
 function getRandomId() {
@@ -54,7 +71,37 @@ async function savePokePicToDisk(
   targetUrl,
   targetDownloadFilename,
   targetDownloadDirectory = "./"
-) {}
+) {
+  // Fetch request to image URL
+  let imageData = await fetch(targetUrl).catch((error) => {
+    throw new Error("Image failed to download");
+  });
+
+  // Check if the directory exists (targetDownloadDirectory)
+  if (!fs.existsSync(targetDownloadDirectory)) {
+    // Make a directory if we need to
+    await mkdir(targetDownloadDirectory);
+  }
+
+  // Create a JS-friendly file path
+  let fullFileDestination = path.join(
+    targetDownloadDirectory,
+    targetDownloadFilename
+  );
+
+  // Stream the image from the fetch to disk
+  let fileDownloadStream = fs.createWriteStream(fullFileDestination);
+
+  // Get data as bytes from the web request, then pipe the bytes into the hard drive
+  await finished(
+    Readable.fromWeb(imageData.bodyUsed).pipe(fileDownloadStream)
+  ).catch((error) => {
+    throw new Error("Failed to save image to disk");
+  });
+
+  // Return the saved image location
+  return fullFileDestination;
+}
 
 module.exports = {
   downloadPokePic,
