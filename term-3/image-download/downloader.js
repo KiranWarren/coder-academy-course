@@ -23,12 +23,12 @@ function downloadPokePic(targetId = getRandomId()) {
   return new Promise(async (resolve, reject) => {
     try {
       // Get the image URL
-      let newUrl = await getPokePicURL(targetId);
+      let newPokemon = await getPokePicURLAndName(targetId);
 
       // Download the image
       let saveFileLocation = await savePokePicToDisk(
-        newUrl,
-        "ExampleImage.png",
+        newPokemon.imageUrl,
+        `${newPokemon.pokemonName}.png`,
         "images"
       );
 
@@ -46,7 +46,7 @@ function getRandomId() {
 
 // Retrieve Pokemon data for given id
 // Retrieve the image url from the Pokemon data
-async function getPokePicURL(targetId = getRandomId()) {
+async function getPokePicURLAndName(targetId = getRandomId()) {
   // Retrieve the API
   let response = await fetch(API_URL_BASE + targetId).catch((error) => {
     throw new Error("API failure)");
@@ -62,7 +62,10 @@ async function getPokePicURL(targetId = getRandomId()) {
   });
 
   // Return the image URL from the JSON data
-  return data.sprites.other["official-artwork"].front_default;
+  return {
+    pokemonName: data.name,
+    imageUrl: data.sprites.other["official-artwork"].front_default,
+  };
 }
 
 // Download that image and save it to the computer
@@ -106,6 +109,6 @@ async function savePokePicToDisk(
 module.exports = {
   downloadPokePic,
   getRandomId,
-  getPokePicURL,
+  getPokePicURLAndName,
   savePokePicToDisk,
 };
