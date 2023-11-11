@@ -94,7 +94,7 @@ async function savePokePicToDisk(
 
   // Get data as bytes from the web request, then pipe the bytes into the hard drive
   await finished(
-    Readable.fromWeb(imageData.bodyUsed).pipe(fileDownloadStream)
+    Readable.fromWeb(imageData.body).pipe(fileDownloadStream)
   ).catch((error) => {
     throw new Error("Failed to save image to disk");
   });
