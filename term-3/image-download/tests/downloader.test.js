@@ -29,4 +29,9 @@ describe("Retrieve a Pokemon name and image URL", () => {
     expect(result.imageUrl).toEqual(expectedImageUrl);
     expect(result.pokemonName).toEqual("pikachu");
   });
+
+  // Clear the modification to fetch created for testing
+  afterEach(() => {
+    global.fetch.mockClear;
+  });
 });
