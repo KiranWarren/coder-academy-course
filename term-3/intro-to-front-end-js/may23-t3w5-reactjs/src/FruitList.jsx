@@ -10,7 +10,7 @@ let someFruit = [
   
 export default function FruitList() {
     let fruitListItems = someFruit.map((fruit) => {
-      return <li>{fruit}</li>;
+      return <li key={fruit}>{fruit}</li>;
     });
     return fruitListItems;
 };
