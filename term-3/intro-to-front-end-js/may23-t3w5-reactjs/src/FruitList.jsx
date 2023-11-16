@@ -1,3 +1,5 @@
+import './FruitList.css'
+
 // // Array of fruit names:
 // let someFruit = [
 //     "mangoes",
@@ -16,7 +18,7 @@ export default function FruitList(props) {
     } 
 
     let fruitListItems = props.listToShow.map((fruit) => {
-      return <li key={fruit}>{fruit}</li>;
+      return <li className="listMessage" key={fruit}>{fruit}</li>;
     });
     return (
       <>
@@ -24,6 +26,7 @@ export default function FruitList(props) {
         <ul>
           {fruitListItems}
         </ul>
+        {props.children}
       </>
     );
 };
