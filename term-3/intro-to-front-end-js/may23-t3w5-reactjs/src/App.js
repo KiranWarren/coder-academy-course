@@ -7,9 +7,14 @@ function App() {
   return (
     <div className="App">
       <Title />
-      <ul>
-        <FruitList />
-      </ul>
+      <FruitList
+        colour={"Yellow"}
+        listToShow={["Mangoes", "Bananas", "Lemons", "Pineapple"]}
+      />
+      <FruitList
+        colour={"Green"}
+        listToShow={["Lime", "Pears", "Apples", "Chillies"]}
+      />
       <Footer />
     </div>
   );
