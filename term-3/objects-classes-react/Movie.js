@@ -1,4 +1,4 @@
-const { Media } = require("./Media.js");
+const Media = require("./Media.js");
 
 class Movie extends Media {
   constructor(name, runtime, director) {
@@ -12,8 +12,4 @@ class Movie extends Media {
   }
 }
 
-movie1 = new Movie("Blade Runner", 122, "Bob Bobbins");
-
-console.log(movie1);
-console.log(Media.count);
-console.log(movie1.getMovie());
+module.exports = Movie;

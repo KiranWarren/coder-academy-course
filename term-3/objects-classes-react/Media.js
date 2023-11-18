@@ -25,6 +25,4 @@ class Media {
   }
 }
 
-module.exports = {
-  Media,
-};
+module.exports = Media;
