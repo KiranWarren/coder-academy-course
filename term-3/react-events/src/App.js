@@ -47,7 +47,11 @@ class App extends React.Component {
         >
           Decrease Pokemon count
         </button>
-        <Pokemon />
+        {Array(this.state.pokemonCount)
+          .fill(null)
+          .map((element, index) => (
+            <Pokemon key={index}/>
+          ))}
       </div>
     );
   }
