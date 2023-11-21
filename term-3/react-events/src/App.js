@@ -18,10 +18,35 @@ class App extends React.Component {
       pokemonCount: 1,
     };
   }
+
+  increasePokemonCount(currentCount) {
+    this.setState({ pokemonCount: currentCount + 1 });
+  }
+
+  decreasePokemonCount(currentCount) {
+    if (currentCount > 0) {
+      this.setState({ pokemonCount: currentCount - 1 });
+    }
+  }
+
   render() {
     return (
       <div>
         <h1>Pokemon Page</h1>
+        <button
+          onClick={() => {
+            this.increasePokemonCount(this.state.pokemonCount);
+          }}
+        >
+          Increase Pokemon count
+        </button>
+        <button
+          onClick={() => {
+            this.decreasePokemonCount(this.state.pokemonCount);
+          }}
+        >
+          Decrease Pokemon count
+        </button>
         <Pokemon />
       </div>
     );
