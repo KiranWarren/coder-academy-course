@@ -1,4 +1,4 @@
-export default function BusinessCardDisplay (props) {
+export default function BusinessCardDisplay(props){
     return (
         <div>
             <h1>{props.name}</h1>
