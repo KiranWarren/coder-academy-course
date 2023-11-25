@@ -17,9 +17,9 @@ function App() {
           <Route index element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
         </Route>
-        <Route path="/pokemon" element={<PokemonFetcherPage />} />
-        <Route path="/about/contact" element={<ContactPage />} />
         <Route path="/cards" element={<BusinessCardPage />} />
+        <Route path="/pokemon" element={<PokemonFetcherPage />} />
+        <Route path="/pokemon/:pokemonId" element={<PokemonFetcherPage />} />
       </Routes>
     </div>
   );
