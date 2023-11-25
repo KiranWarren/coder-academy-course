@@ -1,15 +1,10 @@
 import "./App.css";
-import BusinessCardParent from "./BusinessCardParent";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <BusinessCardParent />
-      <BusinessCardParent />
-      <BusinessCardParent />
-      <BusinessCardParent />
-      <BusinessCardParent />
-      <BusinessCardParent />
+      <HomePage />
     </div>
   );
 }
