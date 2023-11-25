@@ -1,4 +1,4 @@
-import BusinessCardParent from "../components/BusinessCardParent";
+import BusinessCardParent from "../components/BusinessCardParent"
 
 export default function BusinessCardPage(props) {
     return (
