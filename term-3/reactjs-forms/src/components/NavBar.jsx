@@ -7,7 +7,7 @@ export default function NavBar() {
             <h3>navbar</h3>
             <ul>
                 <li><NavLink to='/' style={({isActive}) => isActive ? {color:"red"} : undefined}>Home</NavLink></li>
-                <li><NavLink to='/about' style={({isActive}) => isActive ? {color:"red"} : undefined}>About</NavLink></li>
+                <li><NavLink to='/about' end style={({isActive}) => isActive ? {color:"red"} : undefined}>About</NavLink></li>
                 <li><NavLink to='/about/contact' style={({isActive}) => isActive ? {color:"red"} : undefined}>Contact</NavLink></li>
                 <li><NavLink to='/cards' style={({isActive}) => isActive ? {color:"red"} : undefined}>Business Cards</NavLink></li>
                 <li><NavLink to='/pokemon' style={({isActive}) => isActive ? {color:"red"} : undefined}>Pokemon</NavLink></li>
