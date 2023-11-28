@@ -8,8 +8,28 @@ export default function PokemonHook() {
     fetchData();
   }
 
+  // useEffect (cb func) is equivalent to componentDidUpdate
+  useEffect(() => {
+    console.log(
+      "It triggers everytime a state changes, because there's not a dependency array"
+    );
+  });
+
+  // useEffect (cb func, []) is equivalent to componentDidMount
   useEffect(() => {
     fetchData();
+  }, []);
+
+  // useEffect (cb func, []) triggers when there is a change in the pokemon state
+  useEffect(() => {
+    console.log("Triggers when there is a change in pokemon state");
+  }, [pokemon]);
+
+  // useEffect (cb func(return(anon func)), []) is equivalent to componentDidUnmount
+  useEffect(() => {
+    return () => {
+      console.log("It triggers when the component is unmounted");
+    };
   }, []);
 
   let fetchData = async () => {
