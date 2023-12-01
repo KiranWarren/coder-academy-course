@@ -4,14 +4,17 @@ import {
   ConnectionContext,
   defaultConnectionData,
 } from "./context/ConnectionContext";
+import UserGlobalData from "./context/UserContext";
 
 function App() {
   return (
     <div className="App">
-      {/* Add provider and the initial context */}
-      <ConnectionContext.Provider value={defaultConnectionData}>
-        <ApiTester />
-      </ConnectionContext.Provider>
+      <UserGlobalData>
+        {/* Add provider and the initial context */}
+        <ConnectionContext.Provider value={defaultConnectionData}>
+          <ApiTester />
+        </ConnectionContext.Provider>
+      </UserGlobalData>
     </div>
   );
 }
