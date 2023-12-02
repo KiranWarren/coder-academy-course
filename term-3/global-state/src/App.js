@@ -1,21 +1,17 @@
 import ApiTester from "./ApiTester";
 import UserDisplay from "./UserDisplay";
+import ConnectionProvider from "./context/ConnectionContext";
 import "./App.css";
-import {
-  ConnectionContext,
-  defaultConnectionData,
-} from "./context/ConnectionContext";
 import UserGlobalData from "./context/UserContext";
 
 function App() {
   return (
     <div className="App">
       <UserGlobalData>
-        {/* Add provider and the initial context */}
-        <ConnectionContext.Provider value={defaultConnectionData}>
+        <ConnectionProvider>
           <ApiTester />
           <UserDisplay />
-        </ConnectionContext.Provider>
+        </ConnectionProvider>
       </UserGlobalData>
     </div>
   );
