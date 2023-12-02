@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer } from "react";
+import { userReducer } from "./UserReducer";
 
 const defaultUserData = {
   jwt: "not empty",
@@ -7,10 +8,11 @@ const defaultUserData = {
 export const UserContext = createContext(defaultUserData);
 
 export default function UserGlobalData(props) {
-  const [userData, setUserData] = useState(defaultUserData);
+  // const [userData, setUserData] = useState(defaultUserData);
+  const [userData, userDataDispatch] = useReducer(userReducer, defaultUserData);
   return (
     <UserContext.Provider
-      value={{ userData: userData, setUserData: setUserData }}
+      value={{ userData: userData, userDataDispatch: userDataDispatch }}
     >
       {props.children}
     </UserContext.Provider>
