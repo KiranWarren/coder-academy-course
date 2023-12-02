@@ -1,4 +1,5 @@
 import ApiTester from "./ApiTester";
+import UserDisplay from "./UserDisplay";
 import "./App.css";
 import {
   ConnectionContext,
@@ -13,6 +14,7 @@ function App() {
         {/* Add provider and the initial context */}
         <ConnectionContext.Provider value={defaultConnectionData}>
           <ApiTester />
+          <UserDisplay />
         </ConnectionContext.Provider>
       </UserGlobalData>
     </div>
