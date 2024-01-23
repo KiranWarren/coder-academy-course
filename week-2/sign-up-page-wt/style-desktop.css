@@ -1,0 +1,25 @@
+@media screen and (min-width: 700px) {
+    .login-image{
+        display:block;
+    }
+
+    .login-container{
+        display:flex;
+        width:100vw;
+        height:100vh;
+    }
+
+    .login-container section{
+        flex:1;
+    }
+
+    .login-image img{
+        width:50vw;
+    }
+
+    .login-section{
+        padding-left:10vw;
+        padding-right:10vw;
+    }
+
+}
